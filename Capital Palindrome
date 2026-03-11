@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char str[100];
+    int i, len, isPalindrome = 1;
+
+    printf("Enter a string: ");
+    if (scanf("%99[^\n]", str) != 1) return 0;
+
+    len = strlen(str);
+
+    for (i = 0; i < len; i++) {
+        str[i] = toupper((unsigned char)str[i]);
+    }
+
+    for (i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - i - 1]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+
+    printf("Uppercase Version: %s\n", str);
+    if (isPalindrome) {
+        printf("Result: It is a palindrome.\n");
+    } else {
+        printf("Result: Not a palindrome.\n");
+    }
+
+    return 0;
+}
